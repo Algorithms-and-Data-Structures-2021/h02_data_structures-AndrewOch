@@ -69,14 +69,17 @@ namespace itis {
         if (index == 0) {
             head_ = head_->next;
             size_--;
-            return node->data;
+            Element e = node->data;
+            delete node;
+            return e;
         } else {
             Node *prev = find_node(index - 1);
             Node *next = find_node(index + 1);
-
             prev->next = next;
             size_--;
-            return node->data;
+            Element e = node->data;
+            delete node;
+            return e;
         }
         // Tip 1: рассмотрите случай, когда удаляется элемент в начале списка
         // Tip 2: используйте функцию find_node(index)
