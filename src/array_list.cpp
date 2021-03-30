@@ -87,8 +87,11 @@ namespace itis {
     void ArrayList::Clear() {
         // Tip 1: можете использовать std::fill для заполнения ячеек массива значением  Element::UNINITIALIZED
         // напишите свой код здесь ...
-        std::fill(data_, data_ + size_, Element::UNINITIALIZED);
+        delete[] data_;
+        data_ = new Element[capacity_];
         size_ = 0;
+        std::fill(data_, data_ + capacity_, Element::UNINITIALIZED);
+
     }
 
     Element ArrayList::Get(int index) const {
